@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledTask = styled.div`
-	width: 300px;
+	width: 306px;
 	color: #fff;
 	background-color: #25273d;
 	padding: 0px 10px;
@@ -46,6 +46,8 @@ const StyledButtonDelete = styled.button`
 	color: #fff;
 	border: none;
 	cursor: pointer;
+	height: 19px;
+	border-radius: 15px;
 `;
 
 export { StyledInput, StyledLabel, StyledTask, StyledButtonDelete };

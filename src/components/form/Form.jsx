@@ -3,10 +3,14 @@ import { v4 } from 'uuid';
 import {
 	StyledCenteredForm,
 	StyledContainers,
+	StyledContainersClear,
+	StyledContainersFilter,
 	StyledForm,
 	StyledInput,
 	StyledLabel,
-	StyledSpan
+	StyledSpan,
+	StyledSpanFilter,
+	StyledTitle
 } from './styles';
 import Task from '../task/Task';
 
@@ -18,7 +22,7 @@ const Form = () => {
 	return (
 		<StyledCenteredForm>
 			<StyledForm onSubmit={event => handleSubmit(event, tasks, setTasks)}>
-				<h1>TO DO LIST</h1>
+				<StyledTitle>TO DO LIST</StyledTitle>
 				<StyledContainers>
 					<StyledLabel htmlFor='input'></StyledLabel>
 					<StyledInput
@@ -41,20 +45,24 @@ const Form = () => {
 							/>
 						))}
 					</div>
-					<StyledContainers>
+					<StyledContainersClear>
 						<StyledSpan>{tasks.length} items left</StyledSpan>
 						<StyledSpan onClick={() => clearCompletedTasks(tasks, setTasks)}>
 							Clear completed
 						</StyledSpan>
-					</StyledContainers>
+					</StyledContainersClear>
 				</div>
-				<StyledContainers>
-					<StyledSpan onClick={() => setFilter('all')}>All</StyledSpan>
-					<StyledSpan onClick={() => setFilter('active')}>Active</StyledSpan>
-					<StyledSpan onClick={() => setFilter('completed')}>
+				<StyledContainersFilter>
+					<StyledSpanFilter onClick={() => setFilter('all')}>
+						All
+					</StyledSpanFilter>
+					<StyledSpanFilter onClick={() => setFilter('active')}>
+						Active
+					</StyledSpanFilter>
+					<StyledSpanFilter onClick={() => setFilter('completed')}>
 						Completed
-					</StyledSpan>
-				</StyledContainers>
+					</StyledSpanFilter>
+				</StyledContainersFilter>
 			</StyledForm>
 		</StyledCenteredForm>
 	);
