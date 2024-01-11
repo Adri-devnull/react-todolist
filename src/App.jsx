@@ -1,5 +1,7 @@
+import { StyledContent } from './components/content/styles';
 import Filters from './components/filters/Filters';
 import Form from './components/form/Form';
+import ItemsLeft from './components/items-left/ItemsLeft';
 import Main from './components/main/Main';
 import Tasks from './components/tasks/Tasks';
 import { FILTERS } from './constants/filters';
@@ -12,15 +14,21 @@ const App = () => {
 	const filteredTasks = filterTasks(filter, tasks);
 	return (
 		<Main>
-			<Form tasks={tasks} setTasks={setTasks} />
-			<Tasks
-				tasks={tasks}
-				setTasks={setTasks}
-				filteredTasks={filteredTasks}
-				completeTask={completeTask}
-				deleteTask={deleteTask}
-			/>
-			<Filters setFilter={setFilter} />
+			<StyledContent>
+				<Form tasks={tasks} setTasks={setTasks} />
+				<div>
+					<Tasks
+						tasks={tasks}
+						setTasks={setTasks}
+						filteredTasks={filteredTasks}
+						completeTask={completeTask}
+						deleteTask={deleteTask}
+					/>
+
+					<ItemsLeft length={tasks.length}></ItemsLeft>
+				</div>
+				<Filters setFilter={setFilter} />
+			</StyledContent>
 		</Main>
 	);
 };
