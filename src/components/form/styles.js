@@ -26,30 +26,6 @@ const StyledContainers = styled.div`
 	box-shadow: 1px 5px 15px #171718;
 `;
 
-const StyledContainersClear = styled.div`
-	width: 300px;
-	color: #fff;
-	background-color: #25273d;
-	padding: 18px 13px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	border-radius: 0px 0px 10px 10px;
-	box-shadow: 1px 5px 15px #171718;
-`;
-
-const StyledContainersFilter = styled.div`
-	width: 300px;
-	color: #fff;
-	background-color: #25273d;
-	padding: 18px 13px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 20px;
-	border-radius: 10px;
-`;
-
 const StyledTitle = styled.h1`
 	font-weight: bold;
 	font-size: 2em;
@@ -78,29 +54,11 @@ const StyledLabel = styled.label`
 	position: relative;
 `;
 
-const StyledSpan = styled.span`
-	font-size: 0.7em;
-	cursor: pointer;
-	color: #999999;
-	padding: 0px 20px;
-`;
-
-const StyledSpanFilter = styled.span`
-	font-size: 0.8em;
-	cursor: pointer;
-	color: #c8cbe7;
-	font-weight: bold;
-`;
-
 export {
 	StyledForm,
 	StyledCenteredForm,
 	StyledContainers,
 	StyledInput,
 	StyledLabel,
-	StyledSpan,
-	StyledSpanFilter,
-	StyledTitle,
-	StyledContainersClear,
-	StyledContainersFilter
+	StyledTitle
 };
