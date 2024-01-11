@@ -34,6 +34,7 @@ const Form = () => {
 								id={tsk.id}
 								job={tsk.job}
 								action={() => completeTask(tsk.id, tasks, setTasks)}
+								actionDelete={() => deleteTask(tsk.id, tasks, setTasks)}
 								completed={tsk.completed}
 							/>
 						))}
@@ -76,6 +77,11 @@ const completeTask = (id, tasks, setTasks) => {
 	});
 
 	setTasks(tasksUpdated);
+};
+
+const deleteTask = (id, tasks, setTasks) => {
+	const remainingTasks = tasks.filter(task => id !== task.id);
+	setTasks(remainingTasks);
 };
 
 export default Form;

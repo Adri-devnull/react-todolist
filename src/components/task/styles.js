@@ -35,4 +35,11 @@ const StyledLabel = styled.label`
 	}
 `;
 
-export { StyledInput, StyledLabel, StyledTask };
+const StyledButtonDelete = styled.button`
+	background-color: red;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+`;
+
+export { StyledInput, StyledLabel, StyledTask, StyledButtonDelete };

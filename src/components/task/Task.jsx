@@ -1,6 +1,11 @@
-import { StyledInput, StyledLabel, StyledTask } from './styles';
+import {
+	StyledButtonDelete,
+	StyledInput,
+	StyledLabel,
+	StyledTask
+} from './styles';
 
-const Task = ({ id, job, action, completed }) => {
+const Task = ({ id, job, action, completed, actionDelete }) => {
 	return (
 		<StyledTask>
 			<StyledLabel htmlFor={id} $completed={completed}>
@@ -12,7 +17,9 @@ const Task = ({ id, job, action, completed }) => {
 				id={id}
 				onChange={action}
 			></StyledInput>
-			<div>X</div>
+			<StyledButtonDelete type='button' onClick={actionDelete}>
+				X
+			</StyledButtonDelete>
 		</StyledTask>
 	);
 };
