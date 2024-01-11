@@ -12,7 +12,9 @@ import Task from '../task/Task';
 
 const Form = () => {
 	const [tasks, setTasks] = useState([]);
+	const [filter, setFilter] = useState(['all']);
 
+	const filteredTasks = filterTasks(tasks, filter);
 	return (
 		<StyledCenteredForm>
 			<StyledForm onSubmit={event => handleSubmit(event, tasks, setTasks)}>
@@ -28,7 +30,7 @@ const Form = () => {
 				</StyledContainers>
 				<div>
 					<div>
-						{tasks.map(tsk => (
+						{filteredTasks.map(tsk => (
 							<Task
 								key={tsk.id}
 								id={tsk.id}
@@ -41,13 +43,17 @@ const Form = () => {
 					</div>
 					<StyledContainers>
 						<StyledSpan>{tasks.length} items left</StyledSpan>
-						<StyledSpan>Clear completed</StyledSpan>
+						<StyledSpan onClick={() => clearCompletedTasks(tasks, setTasks)}>
+							Clear completed
+						</StyledSpan>
 					</StyledContainers>
 				</div>
 				<StyledContainers>
-					<StyledSpan>All</StyledSpan>
-					<StyledSpan>Active</StyledSpan>
-					<StyledSpan>Completed</StyledSpan>
+					<StyledSpan onClick={() => setFilter('all')}>All</StyledSpan>
+					<StyledSpan onClick={() => setFilter('active')}>Active</StyledSpan>
+					<StyledSpan onClick={() => setFilter('completed')}>
+						Completed
+					</StyledSpan>
 				</StyledContainers>
 			</StyledForm>
 		</StyledCenteredForm>
@@ -83,5 +89,42 @@ const deleteTask = (id, tasks, setTasks) => {
 	const remainingTasks = tasks.filter(task => id !== task.id);
 	setTasks(remainingTasks);
 };
+
+const clearCompletedTasks = (tasks, setTasks) => {
+	const undeletedTasks = tasks.filter(task => !task.completed);
+	setTasks(undeletedTasks);
+};
+
+const filterTasks = (tasks, filter) => {
+	return tasks.filter(task => {
+		if (filter === 'active') {
+			return !task.completed;
+		} else if (filter === 'completed') {
+			return task.completed;
+		}
+		return true;
+	});
+};
+
+// const showActiveTasks = (tasks, setTasks) => {
+// 	const activeTasks = tasks.filter(task => !task.completed);
+// 	setTasks(activeTasks);
+// };
+
+// const showCompletedTasks = (tasks, setTasks) => {
+// 	const completedTasks = tasks.filter(task => task.completed);
+// 	setTasks(completedTasks);
+// };
+
+// const showAllTasks = (tasks, setTasks) => {
+// 	const allTasks = tasks.map(task => {
+// 		return task;
+// 	});
+// 	setTasks(allTasks);
+// };
+
+// onClick={() => showAllTasks(tasks, setTasks)}
+// 	onClick={() => showActiveTasks(tasks, setTasks)}
+//  onClick={() => showCompletedTasks(tasks, setTasks)}
 
 export default Form;

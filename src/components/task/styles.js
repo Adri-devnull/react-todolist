@@ -31,7 +31,13 @@ const StyledLabel = styled.label`
 		height: 16px;
 		border: 1px solid #fff;
 		border-radius: 10px;
-		background-color: ${({ $completed }) => ($completed ? 'red' : 'blue')};
+		background-color: ${({ $completed }) =>
+			$completed ? '#a970f1' : 'transparent'};
+		background-image: ${({ $completed }) =>
+			$completed ? 'url("./public/assets/images/icon-check.svg")' : 'none'};
+		background-size: 70%;
+		background-repeat: no-repeat;
+		background-position: center;
 	}
 `;
 
