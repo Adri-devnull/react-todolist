@@ -1,10 +1,10 @@
 import { StyledItemsLeft, StyledSpan } from './styles';
 
-const ItemsLeft = ({ length }) => {
+const ItemsLeft = ({ length, action }) => {
 	return (
 		<StyledItemsLeft>
 			<StyledSpan> {length} Items Left</StyledSpan>
-			<StyledSpan>Delete item</StyledSpan>
+			<StyledSpan onClick={action}>Delete item</StyledSpan>
 		</StyledItemsLeft>
 	);
 };

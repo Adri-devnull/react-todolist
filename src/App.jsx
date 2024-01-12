@@ -12,6 +12,7 @@ const App = () => {
 	const [filter, setFilter] = useState(FILTERS.ALL);
 
 	const filteredTasks = filterTasks(filter, tasks);
+	const activeTasksCount = filterActiveTasks(tasks).length;
 	return (
 		<Main>
 			<StyledContent>
@@ -25,7 +26,10 @@ const App = () => {
 						deleteTask={deleteTask}
 					/>
 
-					<ItemsLeft length={tasks.length}></ItemsLeft>
+					<ItemsLeft
+						length={activeTasksCount}
+						action={() => deleteSelectedTasks(tasks, setTasks)}
+					></ItemsLeft>
 				</div>
 				<Filters setFilter={setFilter} />
 			</StyledContent>
@@ -46,6 +50,11 @@ const completeTask = (id, tasks, setTasks) => {
 
 const deleteTask = (id, tasks, setTasks) => {
 	const remainingTasks = tasks.filter(task => id !== task.id);
+	setTasks(remainingTasks);
+};
+
+const deleteSelectedTasks = (tasks, setTasks) => {
+	const remainingTasks = tasks.filter(task => !task.completed);
 	setTasks(remainingTasks);
 };
 
